@@ -4,37 +4,38 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
+    <header class="bg-white flex justify-between px-10 py-6">
+      <a href="/">Destra Robotics</a>
+      <div class="links flex gap-10 uppercase">
+        <!-- TODO: Beatiful Underscore with animation -->
+        <a class="hover:underline" href="#">About</a>
+        <a class="hover:underline" href="#">Team</a>
+        <a class="hover:underline" href="#">Project</a>
+        <a class="hover:underline" href="#">Contact</a>
+      </div>
+    </header>
     <slot />
+    <footer>
+      <div class="bg-primary px-10 py-6 flex gap-10 text-gray-300">
+        <div>Destra Robotics</div>
+        <a class="hover:underline" href="#">Impressum</a>
+        <div>Copyright - {year}</div>
+        <div class="links flex gap-10 uppercase"></div>
+      </div>
+    </footer>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: #f6f6f6;
-  }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-</style>
