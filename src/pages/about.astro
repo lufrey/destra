@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Destra Robotics">
+  <div class="relative overflow-hidden bg-primary">
+    <div class="absolute ml-[15%] w-1/4 h-[150%] rotate-[-20deg] bg-bright">
+    </div>
+    <div class="absolute w-1/3 h-full bg-bright"></div>
+    <div
+      class="flex flex-col items-center max-w-screen-lg gap-6 p-10 m-auto text-bright md:flex-row"
+    >
+      <div class="w-full max-w-sm h-60 md:max-w-none md:basis-2/5 shrink-0">
+        Test
+      </div>
+      <div class="flex flex-col items-center gap-6 text-center md:basis-3/5">
+        <h1 class="text-4xl">Started as a student project</h1>
+        <p class="font-light">
+          The project was launched in 2021 at the Berlin University of Applied
+          Sciences as a student project of the "Humanoid Robotics" course. The
+          task was to develop a robotic hand compatible with the Franka Emika
+          Panda robot and capable of grasping various benchmarks. under the
+          direction of Prof. Dr. Hannes Höppner, director of the Soft
+          Interactive Robotics Laboratory (SIRo-Lab), 7 different graspers and
+          hands were developed
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="bg-bright">
+    <div
+      class="flex flex-col items-center max-w-screen-lg gap-6 p-10 m-auto text-primary md:flex-row-reverse"
+    >
+      <div
+        class="flex aspect-[2] items-center justify-center w-full h-full max-w-sm text-center bg-gray-400 md:max-w-none md:basis-1/2 bg-opacity-40 rounded-xl"
+      >
+        Bild
+      </div>
+      <div class="flex flex-col items-center gap-6 basis-1/2">
+        <h2 class="text-3xl">Continuation of the project</h2>
+        <p class="font-light text-center">
+          After the project was completed, we became interested and continued to
+          develop our hand. We documented the process on social media platforms
+          such as twitter and were able to attract the attention of named
+          manufacturers such as ROBOTIS.
+        </p>
+        <a
+          class="flex items-center gap-2 px-4 py-1 mt-2 transition-all rounded-full shadow-sm hover:shadow-md cursor-pointer hover:bg-[#1981c6] bg-[#1D9BF0] text-bright"
+          href="https://twitter.com/Destra41985317"
+          target="_blank"
+        >
+          Twitter
+          <img
+            src="/images/icon-twitter-white.svg"
+            alt="Twitter Logo"
+            class="h-3"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-primary">
+    <div class="flex flex-col max-w-screen-lg gap-6 p-10 m-auto text-bright">
+      <h2 class="text-3xl text-center">What is our goal?</h2>
+      <p class="max-w-screen-sm m-auto font-light text-center">
+        After the project was completed, we became interested and continued to
+        develop our hand. We documented the process on social media platforms
+        such as twitter and were able to attract the attention of named
+        manufacturers such as ROBOTIS.
+      </p>
+    </div>
+  </div>
+</Layout>

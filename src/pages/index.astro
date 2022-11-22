@@ -4,24 +4,24 @@ import Layout from '../layouts/Layout.astro';
 const compatibleWith = [
   {
     title: 'OpenCV',
-    image: '',
+    image: '/images/icon-opencv.svg',
     description:
       'Finger pose estimation with Mediapipe and OpenCV for the independent movement of the individual fingers.',
   },
   {
     title: 'ROS',
-    image: '',
+    image: '/images/icon-ros.svg',
     description:
       'The U2D2 shield makes the hand ROS compatible and can be complemented by any ROS application.',
   },
   {
     title: 'C++',
-    image: '',
+    image: '/images/icon-cpp.svg',
     description: 'The code can be executed directly via a microcomputer.',
   },
   {
     title: 'Python',
-    image: '',
+    image: '/images/icon-python.svg',
     description:
       'With the help of the U2D2 shield, python code can be executed on the hand.',
   },
@@ -42,7 +42,7 @@ const compatibleWith = [
         </div>
         <div class="bg-bright w-7/12 mt-6 h-[2px] hidden md:block"></div>
         <div
-          class="px-6 py-1 mt-10 transition-all rounded-full shadow-sm cursor-pointer md:mr-auto bg-accent hover:bg-accentHover"
+          class="px-6 py-1 mt-10 transition-all rounded-full shadow-sm cursor-pointer hover:shadow-md md:mr-auto bg-accent hover:bg-accentHover"
         >
           Technical Data
         </div>
@@ -60,15 +60,15 @@ const compatibleWith = [
     >
       <div class="flex flex-col items-center gap-6 basis-2/3">
         <h2 class="text-3xl">What is Destra?</h2>
-        <div class="font-light text-center">
+        <p class="font-light text-center">
           Destra is a fully 3D-printed robotic hand that enables cost-effective
           manufacturing for teaching, prosthetics and interfacing with other
           robotic systems. With 6 degrees of freedom, each finger can be
           controlled independently and the thumb can be opposed. A suitable
           coupling point makes it compatible with any modern robot arm.
-        </div>
+        </p>
         <div
-          class="px-6 py-1 mt-2 transition-all rounded-full shadow-sm cursor-pointer hover:bg-dark bg-primary text-bright"
+          class="px-6 py-1 mt-2 transition-all rounded-full shadow-sm cursor-pointer hover:shadow-md hover:bg-dark bg-primary text-bright"
         >
           More Info
         </div>
@@ -89,8 +89,12 @@ const compatibleWith = [
         {
           compatibleWith.map((compatibleSoftware) => (
             <div class="flex items-center gap-4 compatible basis-full md:basis-1/2">
-              <div class="flex items-center justify-center w-16 h-16 rounded-full aspect-square bg-bright text-dark">
-                Bild
+              <div class="flex items-center justify-center w-16 h-16 p-2 shadow-sm aspect-square rounded-xl bg-bright text-dark">
+                <img
+                  class="object-contain w-full h-full"
+                  src={compatibleSoftware.image}
+                  alt={compatibleSoftware.title}
+                />
               </div>
               <div class="">
                 <h4 class="text-xl">{compatibleSoftware.title}</h4>
