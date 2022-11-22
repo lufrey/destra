@@ -4,10 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#12191EDB',
+        primary: '#2C3234',
         accent: '#6388B2',
         accentHover: '#4773a6',
         bright: '#F6F6F6',
+        dark: '#2B2B2B',
       },
       fontFamily: {
         sans: ['Rubik'],

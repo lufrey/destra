@@ -19,23 +19,29 @@ const year = new Date().getFullYear();
     <title>{title}</title>
   </head>
   <body>
-    <header class="bg-white flex justify-between px-10 py-6">
-      <a href="/">Destra Robotics</a>
-      <div class="links flex gap-10 uppercase">
-        <!-- TODO: Beatiful Underscore with animation -->
-        <a class="hover:underline" href="#">About</a>
-        <a class="hover:underline" href="#">Team</a>
-        <a class="hover:underline" href="#">Project</a>
-        <a class="hover:underline" href="#">Contact</a>
+    <header class="bg-white">
+      <div class="flex justify-between pl-10 pr-16 py-6 max-w-screen-lg m-auto">
+        <a href="/">Destra Robotics</a>
+        <div class="links flex gap-10 uppercase">
+          <!-- TODO: Beatiful Underscore with animation -->
+          <a class="hover:underline" href="#">About</a>
+          <a class="hover:underline" href="#">Team</a>
+          <a class="hover:underline" href="#">Project</a>
+          <a class="hover:underline" href="#">Contact</a>
+        </div>
       </div>
     </header>
     <slot />
     <footer>
-      <div class="bg-primary px-10 py-6 flex gap-10 text-gray-300">
-        <div>Destra Robotics</div>
-        <a class="hover:underline" href="#">Impressum</a>
-        <div>Copyright - {year}</div>
-        <div class="links flex gap-10 uppercase"></div>
+      <div class="bg-primary">
+        <div
+          class="px-10 py-6 flex gap-10 text-gray-300 max-w-screen-lg m-auto"
+        >
+          <div>Destra Robotics</div>
+          <a class="hover:underline" href="#">Impressum</a>
+          <div>Copyright - {year}</div>
+          <div class="links flex gap-10 uppercase"></div>
+        </div>
       </div>
     </footer>
   </body>
