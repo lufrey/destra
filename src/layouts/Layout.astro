@@ -43,15 +43,13 @@ const year = new Date().getFullYear();
       </div>
     </footer>
   </body>
+  <style is:global>
+    .fadein {
+      @apply invisible translate-y-2 opacity-0;
+    }
+  </style>
   <script>
     const targets = Array.from(document.querySelectorAll('.fadein') ?? []);
-    targets.forEach((target) => {
-      target.classList.add('opacity-0', 'invisible');
-
-      if (!target.classList.contains('no-translate')) {
-        target.classList.add('translate-y-2');
-      }
-    });
 
     const fadeInClasses = [
       'opacity-100',
@@ -66,11 +64,7 @@ const year = new Date().getFullYear();
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add(...fadeInClasses);
-          entry.target.classList.remove(
-            'opacity-0',
-            'invisible',
-            'translate-y-2'
-          );
+          entry.target.classList.remove('fadein');
           observer.unobserve(entry.target);
           setTimeout(() => {
             entry.target.classList.remove(...fadeInClasses);
