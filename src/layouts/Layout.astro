@@ -34,7 +34,7 @@ const year = new Date().getFullYear();
     <footer>
       <div class="bg-primary">
         <div
-          class="flex max-w-screen-lg gap-10 px-10 py-6 m-auto text-gray-300"
+          class="flex max-w-screen-lg gap-10 px-10 py-6 m-auto text-gray-300 fadein"
         >
           <div>Destra Robotics</div>
           <a class="hover:underline" href="#">Impressum</a>
@@ -43,4 +43,41 @@ const year = new Date().getFullYear();
       </div>
     </footer>
   </body>
+  <script>
+    const targets = Array.from(document.querySelectorAll('.fadein') ?? []);
+    targets.forEach((target) => {
+      target.classList.add('opacity-0', 'invisible');
+
+      if (!target.classList.contains('no-translate')) {
+        target.classList.add('translate-y-2');
+      }
+    });
+
+    const fadeInClasses = [
+      'opacity-100',
+      'visible',
+      'transition-all',
+      'duration-1000',
+      'delay-350',
+      'translate-y-0',
+    ];
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(...fadeInClasses);
+          entry.target.classList.remove(
+            'opacity-0',
+            'invisible',
+            'translate-y-2'
+          );
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.remove(...fadeInClasses);
+          }, 1000);
+        }
+      });
+    });
+    targets.forEach((target) => observer.observe(target));
+  </script>
 </html>
