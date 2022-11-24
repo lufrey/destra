@@ -1,0 +1,25 @@
+---
+import { getPicture } from '@astrojs/image';
+
+const { pictureClass, imgClass, filename, alt, id, sizes, position } =
+  Astro.props;
+
+const picture = await getPicture({
+  src: filename,
+  widths: [300, 600],
+  fit: 'contain',
+  background: '#00000000',
+  formats: ['webp', 'avif', 'png'],
+  position,
+  ...Astro.props,
+});
+---
+
+<picture class={pictureClass}>
+  <source
+    srcset={picture.sources[0].srcset}
+    type={picture.sources[0].type}
+    sizes={'(max-width: 600px) 300px, 100vw'}
+  />
+  <img {...picture.image} alt={alt} class={imgClass} id={id} />
+</picture>
