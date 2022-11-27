@@ -6,6 +6,13 @@ export interface Props {
 const { title } = Astro.props;
 const year = new Date().getFullYear();
 import logo from '../assets/logo.svg';
+
+const navigation = [
+  { name: 'About', href: '/about' },
+  { name: 'Team', href: '#' },
+  { name: 'Project', href: '/project' },
+  { name: 'Contact', href: '#' },
+];
 ---
 
 <!DOCTYPE html>
@@ -25,13 +32,19 @@ import logo from '../assets/logo.svg';
         class="flex justify-between items-center max-w-screen-lg py-6 pl-10 pr-6 md:pr-16 m-auto"
       >
         <a href="/"><img src={logo} class="block h-10" /></a>
-        <div class="hidden gap-10 uppercase links md:flex">
-          <a class="hover:underline" href="/about">About</a>
-          <a class="hover:underline" href="#">Team</a>
-          <a class="hover:underline" href="/project">Project</a>
-          <a class="hover:underline" href="#">Contact</a>
-        </div>
-        <div class="md:hidden flex flex-col gap-1 hover:gap-1.5">
+        <nav class="hidden gap-10 uppercase links md:flex">
+          {
+            navigation.map((link) => (
+              <a class="hover:underline" href={link.href}>
+                {link.name}
+              </a>
+            ))
+          }
+        </nav>
+        <div
+          class="md:hidden flex flex-col gap-1 hover:gap-1.5 transition-all"
+          id="open-sitemenu"
+        >
           <div class="bg-primary h-0.5 w-8"></div>
           <div class="bg-primary h-0.5 w-8"></div>
           <div class="bg-primary h-0.5 w-8"></div>
@@ -40,6 +53,34 @@ import logo from '../assets/logo.svg';
         </div>
       </div>
     </header>
+    <div
+      class="fixed hidden z-50 top-0 left-0 h-screen w-screen bg-primary flex-col p-6 pl-14 opacity-0 transition-all duration-200"
+      id="sitemenu"
+    >
+      <div
+        class="h-10 justify-center flex flex-col ml-auto relative cursor-pointer"
+        id="close-sitemenu"
+      >
+        <div class="bg-bright h-0.5 w-8 rotate-45 absolute -ml-0.5 right-0">
+        </div>
+        <div class="bg-bright h-0.5 w-8 -rotate-45 absolute -ml-0.5 right-0">
+        </div>
+      </div>
+      <div
+        class="flex flex-col grow gap-10 justify-center text-4xl text-bright text-center mt-10 mr-8"
+      >
+        {
+          navigation.map((link, index) => (
+            <>
+              <a class="hover:underline" href={link.href}>
+                {link.name}
+              </a>
+              {index < navigation.length - 1 && <div class="bg-bright h-0.5" />}
+            </>
+          ))
+        }
+      </div>
+    </div>
     <slot />
     <footer>
       <div class="bg-primary">
@@ -77,5 +118,24 @@ import logo from '../assets/logo.svg';
       });
     });
     targets.forEach((target) => observer.observe(target));
+
+    const showSiteMenu = (state: boolean) => {
+      const sitemenu = document.getElementById('sitemenu');
+      if (!sitemenu) return;
+      if (state) {
+        sitemenu.classList.add('opacity-100', 'flex');
+        sitemenu.classList.remove('opacity-0', 'hidden');
+      } else {
+        sitemenu.classList.add('opacity-0', 'hidden');
+        sitemenu.classList.remove('opacity-100', 'flex');
+      }
+    };
+
+    document
+      .querySelector('#open-sitemenu')
+      ?.addEventListener('click', () => showSiteMenu(true));
+    document
+      .querySelector('#close-sitemenu')
+      ?.addEventListener('click', () => showSiteMenu(false));
   </script>
 </html>
