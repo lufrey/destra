@@ -1,4 +1,5 @@
 ---
+import Pic from '../components/Pic.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -31,11 +32,14 @@ import Layout from '../layouts/Layout.astro';
     <div
       class="flex flex-col items-center max-w-screen-lg gap-6 p-10 m-auto text-primary md:flex-row-reverse"
     >
-      <div
-        class="fadein flex aspect-[2] items-center justify-center w-full h-full max-w-sm text-center bg-gray-400 md:max-w-none md:basis-1/2 bg-opacity-40 rounded-xl"
-      >
-        Bild
-      </div>
+      <Pic
+        alt={'Hand'}
+        src={import('../assets/group_photo.png')}
+        widths={[600, 1200]}
+        sizes="(max-width: 600px) 300px, 100vw"
+        imgClass="object-contain"
+        class="fadein flex items-center justify-center w-full max-w-sm text-center overflow-hidden bg-gray-400 md:max-w-none md:basis-1/2 bg-opacity-40 rounded-xl"
+      />
       <div class="flex flex-col items-center gap-6 basis-1/2">
         <h2 class="text-3xl fadein">Continuation of the project</h2>
         <p class="font-light text-center fadein">

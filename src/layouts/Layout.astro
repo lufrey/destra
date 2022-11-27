@@ -5,6 +5,7 @@ export interface Props {
 
 const { title } = Astro.props;
 const year = new Date().getFullYear();
+import logo from '../assets/logo.svg';
 ---
 
 <!DOCTYPE html>
@@ -20,13 +21,22 @@ const year = new Date().getFullYear();
   </head>
   <body>
     <header class="bg-white">
-      <div class="flex justify-between max-w-screen-lg py-6 pl-10 pr-16 m-auto">
-        <a href="/">Destra Robotics</a>
+      <div
+        class="flex justify-between items-center max-w-screen-lg py-6 pl-10 pr-6 md:pr-16 m-auto"
+      >
+        <a href="/"><img src={logo} class="block h-10" /></a>
         <div class="hidden gap-10 uppercase links md:flex">
           <a class="hover:underline" href="/about">About</a>
           <a class="hover:underline" href="#">Team</a>
           <a class="hover:underline" href="/project">Project</a>
           <a class="hover:underline" href="#">Contact</a>
+        </div>
+        <div class="md:hidden flex flex-col gap-1 hover:gap-1.5">
+          <div class="bg-primary h-0.5 w-8"></div>
+          <div class="bg-primary h-0.5 w-8"></div>
+          <div class="bg-primary h-0.5 w-8"></div>
+          <div class="bg-primary h-0.5 w-8"></div>
+          <div class="bg-primary h-0.5 w-8"></div>
         </div>
       </div>
     </header>
