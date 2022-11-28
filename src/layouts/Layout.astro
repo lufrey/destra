@@ -42,7 +42,7 @@ const navigation = [
           }
         </nav>
         <div
-          class="md:hidden flex flex-col gap-1 hover:gap-1.5 transition-all"
+          class="md:hidden flex flex-col gap-1 transition-all"
           id="open-sitemenu"
         >
           <div class="bg-primary h-0.5 w-8"></div>
@@ -75,7 +75,7 @@ const navigation = [
               <a class="hover:underline" href={link.href}>
                 {link.name}
               </a>
-              {index < navigation.length - 1 && <div class="bg-bright h-0.5" />}
+              {index < navigation.length - 1 && <div class="h-0.5 bg-bright" />}
             </>
           ))
         }
