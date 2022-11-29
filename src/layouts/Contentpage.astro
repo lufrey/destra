@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+const { title } = Astro.props;
+---
+
+<Layout title={`${title} - Destra`}>
+  <div class="bg-bright p-10">
+    <div class="max-w-screen-lg m-auto p-10">
+      <slot />
+    </div>
+  </div>
+</Layout>
