@@ -4,13 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  plugins: ["@typescript-eslint", "prettier"],
+  plugins: ["@typescript-eslint"],
   extends: [
     "standard-with-typescript",
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:astro/recommended",
-    "plugin:prettier/recommended",
   ],
   overrides: [
     {
@@ -56,10 +55,6 @@ module.exports = {
       rules: {
         // override/add rules settings here, such as:
         // "no-unused-vars": "error"
-
-        // If you are using "prettier/prettier" rule,
-        // you don't need to format inside <script> as it will be formatted as a `.astro` file.
-        "prettier/prettier": "off",
       },
     },
     // ...
