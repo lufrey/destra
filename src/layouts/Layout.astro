@@ -13,6 +13,8 @@ const navigation = [
   { name: 'Project', href: '/project' },
   { name: 'Contact', href: '/contact' },
 ];
+import { clsxt } from '../util';
+const isCurrentPage = (href: string) => Astro.url.pathname.startsWith(href);
 ---
 
 <!DOCTYPE html>
@@ -31,11 +33,19 @@ const navigation = [
       <div
         class="flex justify-between items-center max-w-screen-lg py-6 pl-10 pr-6 md:pr-16 m-auto"
       >
-        <a href="/"><img src={logo} class="block h-10" /></a>
-        <nav class="hidden gap-10 uppercase links md:flex">
+        <a href="/"><img src={logo.src} class="block h-10" /></a>
+        <nav class="hidden gap-5 uppercase links md:flex text-xl items-center">
           {
             navigation.map((link) => (
-              <a class="hover:underline" href={link.href}>
+              <a
+                class={clsxt(
+                  ' px-5 py-2',
+                  isCurrentPage(link.href)
+                    ? 'bg-black text-bright hover:bg-black'
+                    : 'hover:bg-bright'
+                )}
+                href={link.href}
+              >
                 {link.name}
               </a>
             ))
@@ -94,30 +104,30 @@ const navigation = [
       </div>
     </footer>
   </body>
-  <style is:global>
+  <!-- <style is:global>
     .fadein {
       @apply invisible translate-y-2 opacity-0;
     }
     .activeFadein {
       @apply visible translate-y-0 opacity-100 transition-all duration-1000;
     }
-  </style>
+  </style> -->
   <script>
-    const targets = Array.from(document.querySelectorAll('.fadein') ?? []);
+    // const targets = Array.from(document.querySelectorAll('.fadein') ?? []);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('activeFadein');
-          entry.target.classList.remove('fadein');
-          observer.unobserve(entry.target);
-          setTimeout(() => {
-            entry.target.classList.remove('activeFadein');
-          }, 1000);
-        }
-      });
-    });
-    targets.forEach((target) => observer.observe(target));
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       entry.target.classList.add('activeFadein');
+    //       entry.target.classList.remove('fadein');
+    //       observer.unobserve(entry.target);
+    //       setTimeout(() => {
+    //         entry.target.classList.remove('activeFadein');
+    //       }, 1000);
+    //     }
+    //   });
+    // });
+    // targets.forEach((target) => observer.observe(target));
 
     const showSiteMenu = (state: boolean) => {
       const sitemenu = document.getElementById('sitemenu');

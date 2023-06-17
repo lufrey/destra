@@ -4,14 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2C3234',
-        accent: '#6388B2',
-        accentHover: '#4773a6',
-        bright: '#F6F6F6',
-        dark: '#2B2B2B',
+        primary: '#121212',
+        accent: '#C2FA45',
+        bright: '#F2F2F2',
+        dark: '#303539',
+        black: '#121212',
+        white: '#fff',
       },
       fontFamily: {
-        sans: ['Rubik'],
+        sans: ['Orbitron'],
+        mono: ['Source Code Pro'],
       },
     },
   },
