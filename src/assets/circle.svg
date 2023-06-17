@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="444.858" height="444.858" viewBox="0 0 444.858 444.858">
+    <defs>
+        <style>
+            .a,
+            .c {
+                fill: none;
+            }
+
+            .a {
+                stroke: #fff;
+                stroke-width: 20px;
+                opacity: 0.6;
+            }
+
+            .b {
+                stroke: none;
+            }
+        </style>
+    </defs>
+    <g class="a" transform="translate(14.146 14.146)">
+        <circle class="b" cx="208.283" cy="208.283" r="208.283" />
+        <circle class="c" cx="208.283" cy="208.283" r="198.283" />
+    </g>
+</svg>

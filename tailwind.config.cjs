@@ -13,8 +13,17 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Orbitron'],
+        secondary: ['Rubik'],
         mono: ['Source Code Pro'],
       },
+      fontSize: {
+        '7xl': '5rem',
+        '4xl': '2.5rem',
+      },
+      screens: {
+        'limit': '1536px',
+        // 'xl': 'calc(1440px + 10rem)',
+      }
     },
   },
   plugins: [],
