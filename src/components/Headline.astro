@@ -1,0 +1,17 @@
+---
+import { clsxt } from '../util';
+export interface Props {
+    bright?: boolean;
+}
+
+const { bright = false } = Astro.props;
+---
+
+<h2
+    class={clsxt(
+        'text-4xl px-3 font-semibold flex-grow-0 leading-tight',
+        bright ? 'text-dark bg-white' : 'text-white bg-black'
+    )}
+>
+    <slot />
+</h2>

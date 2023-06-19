@@ -3,6 +3,7 @@ import Pic from '../components/Pic.astro';
 import Layout from '../layouts/Layout.astro';
 
 import circle from '../assets/circle.svg';
+import Headline from '../components/Headline.astro';
 
 const compatibleWith = [
   {
@@ -75,11 +76,7 @@ const compatibleWith = [
       class="flex flex-col items-center max-w-screen-limit gap-6 py-20 m-auto text-primary md:flex-row px-20"
     >
       <div class="flex flex-col gap-10 basis-2/3 items-start">
-        <h2
-          class="text-4xl text-white bg-black py-2 px-3 font-semibold flex-grow-0"
-        >
-          What is Destra?
-        </h2>
+        <Headline>What is Destra?</Headline>
         <p class="font-mono text-xl leading-normal">
           Destra is a fully 3D-printed robotic hand that enables cost-effective
           manufacturing for teaching, prosthetics and interfacing with other
@@ -105,25 +102,29 @@ const compatibleWith = [
       />
     </div>
   </div>
-  <div class="bg-primary">
-    <div class="max-w-screen-limit gap-6 p-10 m-auto text-bright px-20">
-      <h2 class="text-3xl text-center">Compatible with...</h2>
+  <div class="bg-dark">
+    <div
+      class="max-w-screen-limit gap-6 py-24 p-10 m-auto text-bright px-20 flex flex-col items-start"
+    >
+      <Headline bright>Compatiblity</Headline>
       <div
-        class="grid mt-16 compatibility-list md:grid-cols-2 gap-x-16 gap-y-10"
+        class="grid mt-16 compatibility-list md:grid-cols-2 gap-x-10 gap-y-16"
       >
         {
           compatibleWith.map((compatibleSoftware) => (
-            <div class=" compatible flex basis-full items-center gap-4 md:basis-1/2">
-              <div class="bg-bright text-dark flex aspect-square h-16 w-16 items-center justify-center rounded-xl p-2 shadow-sm">
+            <div class=" compatible flex basis-full items-center gap-8 md:basis-1/2">
+              <div class="border-solid border-bright border-2 text-dark flex aspect-square h-36 w-36 items-center justify-center p-6 shadow-sm">
                 <img
                   class="h-full w-full object-contain"
                   src={compatibleSoftware.image}
                   alt={compatibleSoftware.title}
                 />
               </div>
-              <div class="">
-                <h4 class="text-xl">{compatibleSoftware.title}</h4>
-                <p class="mt-2 font-light font-mono">
+              <div class="font-mono">
+                <h4 class="text-3xl font-semibold">
+                  {compatibleSoftware.title}
+                </h4>
+                <p class="mt-2 font-light text-xl">
                   {compatibleSoftware.description}
                 </p>
               </div>
