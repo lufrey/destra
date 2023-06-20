@@ -37,13 +37,15 @@ const compatibleWith = [
 <Layout title="Destra Robotics">
   <div class="relative overflow-hidden bg-none">
     <div
-      class="w-[calc(15em_+_100%)] h-screen md:h-full -mx-60 left-60 -z-10 absolute [background:transparent_radial-gradient(closest-side_at_35%_30%,_#6A7892_0%,_#10121B_100%)_0%_0%_no-repeat_padding-box;] md:[background:transparent_radial-gradient(closest-side_at_63%_50%,_#6A7892_0%,_#10121B_100%)_0%_0%_no-repeat_padding-box;]"
+      class="md:w-[calc(15em_+_100%)] w-[calc(10em_+_100%)] h-screen md:h-full -mx-80 md:-mx-60 left-60 -z-10 absolute [background:transparent_radial-gradient(closest-side_at_50%_30%,_#6A7892_0%,_#10121B_100%)_0%_0%_no-repeat_padding-box;] md:[background:transparent_radial-gradient(closest-side_at_63%_50%,_#6A7892_0%,_#10121B_100%)_0%_0%_no-repeat_padding-box;]"
     >
     </div>
     <div
       class="flex flex-col-reverse items-center max-w-screen-limit px-8 md:px-20 gap-16 md:gap-6 py-10 m-auto text-bright md:flex-row h-[calc(100vh_-_5.5rem)] md:h-[max(60vh,_800px)]"
     >
-      <div class="flex flex-col items-center md:items-start md:basis-2/3">
+      <div
+        class="flex flex-col items-center text-center md:items-start md:basis-2/3 md:text-left"
+      >
         <h1 class="text-5xl font-bold leading-tight md:text-7xl">
           Students exploring Robotics.
         </h1>
@@ -66,7 +68,7 @@ const compatibleWith = [
           alt="white robot hand"
           src={import('../assets/hand_white.png')}
           widths={[600, 1200]}
-          class="absolute z-20 w-full h-full"
+          class="absolute z-20 w-full h-full pl-4 md:pl-0"
           imgClass="object-contain h-full w-auto m-auto"
           sizes="(max-width: 600px) 300px, 100vw"
         />
