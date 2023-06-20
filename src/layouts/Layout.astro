@@ -87,25 +87,25 @@ const importantFonts = [
       </div>
     </header>
     <div
-      class="fixed top-0 left-0 z-50 flex-col hidden w-screen h-screen p-6 transition-all duration-200 opacity-0 bg-primary pl-14"
+      class="fixed top-0 left-0 z-50 flex-col hidden w-screen h-screen px-8 py-6 transition-all duration-200 opacity-0 bg-bright pl-14"
       id="sitemenu"
     >
       <div
         class="relative flex flex-col justify-center h-10 ml-auto cursor-pointer"
         id="close-sitemenu"
       >
-        <div class="bg-bright h-0.5 w-8 rotate-45 absolute -ml-0.5 right-0">
+        <div class="bg-black h-0.5 w-8 rotate-45 absolute -ml-0.5 right-0">
         </div>
-        <div class="bg-bright h-0.5 w-8 -rotate-45 absolute -ml-0.5 right-0">
+        <div class="bg-black h-0.5 w-8 -rotate-45 absolute -ml-0.5 right-0">
         </div>
       </div>
       <div
-        class="flex flex-col justify-center gap-10 mt-10 mr-8 text-4xl text-center grow text-bright"
+        class="flex flex-col justify-center gap-10 mt-10 mr-8 text-4xl text-center grow text-black uppercase"
       >
         {
           navigation.map((link, index) => (
             <>
-              <a class="hover:underline" href={link.href}>
+              <a class="navlink hover:underline" href={link.href}>
                 {link.name}
               </a>
               {index < navigation.length - 1 && <div class="h-0.5 bg-bright" />}
@@ -154,12 +154,70 @@ const importantFonts = [
     // });
     // targets.forEach((target) => observer.observe(target));
 
+    const kindaRandomize = (
+      text: string,
+      percentage: number,
+      previous: string
+    ) => {
+      const chars = Array.from(text);
+      const previousChars = Array.from(previous);
+      const allowedRandomChars =
+        '!@#$%^&*()_+-=[]{};:,./<>?|\\abcdefghijklmnopqrstuvwxyz';
+      const output = chars.map((char, index) => {
+        if (percentage < Math.random()) return char;
+        else if (previousChars[index] === char) {
+          return char;
+        } else {
+          return allowedRandomChars[
+            Math.floor(Math.random() * allowedRandomChars.length)
+          ];
+        }
+      });
+      return output.join('');
+    };
+
     const showSiteMenu = (state: boolean) => {
       const sitemenu = document.getElementById('sitemenu');
       if (!sitemenu) return;
       if (state) {
         sitemenu.classList.add('opacity-100', 'flex');
         sitemenu.classList.remove('opacity-0', 'hidden');
+
+        const links = Array.from(sitemenu.querySelectorAll('a'));
+        links.forEach((link) => {
+          link.setAttribute('data-text', link.textContent.trim() ?? '');
+          console.log(link.getAttribute('data-text'));
+          console.log(link.textContent);
+          link.textContent = '';
+        });
+
+        const repetitions = 10;
+
+        const animate = (index: number, linkIndex: number) => {
+          const link = links[linkIndex];
+
+          if (index >= repetitions) {
+            link.textContent = link.getAttribute('data-text');
+            return;
+          }
+
+          const text = link.getAttribute('data-text');
+
+          link.textContent = kindaRandomize(
+            text,
+            1 - index / repetitions,
+            index === 0
+              ? kindaRandomize(text, 0.8, '!'.repeat(100))
+              : links[linkIndex].textContent
+          );
+          setTimeout(() => {
+            animate(index + 1, linkIndex);
+          }, (index / repetitions) * 200 + 75);
+        };
+
+        links.forEach((link) => {
+          animate(0, links.indexOf(link));
+        });
       } else {
         sitemenu.classList.add('opacity-0', 'hidden');
         sitemenu.classList.remove('opacity-100', 'flex');
