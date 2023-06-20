@@ -1,85 +1,66 @@
 ---
 import Pic from '../components/Pic.astro';
+import TextSection from '../components/TextSection.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Destra Robotics">
-  <div class="relative overflow-hidden bg-primary">
-    <div class="hidden md:block absolute w-1/4 h-full bg-bright"></div>
-
-    <div
-      class="flex flex-col items-center max-w-screen-limit gap-6 md:gap-0 m-auto text-bright md:flex-row justify-between"
+  <TextSection title="Started as a Student Project" bright={true}>
+    The project was launched in 2021 at the Berlin University of Applied
+    Sciences as a student project of the "Humanoid Robotics" course. The task
+    was to develop a robotic hand compatible with the Franka Emika Panda robot
+    and capable of grasping various benchmarks. under the direction of Prof. Dr.
+    Hannes Höppner, director of the Soft Interactive Robotics Laboratory
+    (SIRo-Lab), 7 different graspers and hands were developed
+    <Pic
+      slot="image"
+      alt="black robot hand"
+      src={import('../assets/hand_blue_illustration.png')}
+      widths={[600, 1200]}
+      aspectRatio={1}
+      sizes="(max-width: 600px) 300px, 100vw"
+      imgClass="h-full object-contain"
+      class="h-80 w-auto basis-1/3"
+    />
+  </TextSection>
+  <TextSection
+    title="Continuation of the project"
+    bright={false}
+    imageAlign="left"
+  >
+    After the project was completed, we became interested and continued to
+    develop our hand. We documented the process on social media platforms such
+    as twitter and were able to attract the attention of named manufacturers
+    such as ROBOTIS.
+    <Pic
+      slot="image"
+      alt="black robot hand"
+      src={import('../assets/group_photo.png')}
+      aspectRatio={1.5}
+      widths={[600, 1200]}
+      sizes="(max-width: 600px) 300px, 100vw"
+      imgClass="h-full object-contain"
+      class="h-72 w-auto basis-1/3"
+    />
+    <a
+      slot="button"
+      class="flex items-center gap-2 px-4 py-2 text-xl mt-2 transition-all cursor-pointer hover:bg-[#1981c6] bg-[#1D9BF0] text-bright font-mono"
+      href="https://twitter.com/Destra41985317"
+      target="_blank"
     >
-      <Pic
-        alt="group photo"
-        src={import('../assets/hand_blue_illustration.png')}
-        widths={[600, 1200]}
-        sizes="(max-width: 600px) 300px, 100vw"
-        aspectRatio={1}
-        imgClass="object-contain h-80 fadein"
-        class="hidden md:block w-full max-w-sm h-full md:max-w-none md:basis-1/3 object-contain z-10 py-10 relative md:bg-bright after:w-0 md:after:w-1/4 after:bg-bright after:absolute after:z-[-1] after:rotate-[8deg] after:h-[150%] after:left-[84%] after:-top-5"
+      Follow on Twitter
+      <img
+        src="/images/icons/icon-twitter-white.svg"
+        alt="Twitter Logo"
+        class="h-3"
       />
-      <div
-        class="flex flex-col items-center gap-6 text-center md:basis-3/5 p-10"
-      >
-        <h1 class="text-4xl fadein">Started as a student project</h1>
-        <p class="font-light fadein">
-          The project was launched in 2021 at the Berlin University of Applied
-          Sciences as a student project of the "Humanoid Robotics" course. The
-          task was to develop a robotic hand compatible with the Franka Emika
-          Panda robot and capable of grasping various benchmarks. under the
-          direction of Prof. Dr. Hannes Höppner, director of the Soft
-          Interactive Robotics Laboratory (SIRo-Lab), 7 different graspers and
-          hands were developed
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="bg-bright">
-    <div
-      class="flex flex-col items-center max-w-screen-limit gap-6 p-10 m-auto text-primary md:flex-row-reverse"
-    >
-      <Pic
-        alt="group photo"
-        src={import('../assets/group_photo.png')}
-        widths={[600, 1200]}
-        sizes="(max-width: 600px) 300px, 100vw"
-        imgClass="object-contain"
-        class="fadein flex items-center justify-center w-full max-w-sm text-center overflow-hidden bg-gray-400 md:max-w-none md:basis-1/2 bg-opacity-40 rounded-xl"
-      />
-      <div class="flex flex-col items-center gap-6 basis-1/2">
-        <h2 class="text-3xl fadein">Continuation of the project</h2>
-        <p class="font-light text-center fadein">
-          After the project was completed, we became interested and continued to
-          develop our hand. We documented the process on social media platforms
-          such as twitter and were able to attract the attention of named
-          manufacturers such as ROBOTIS.
-        </p>
-        <a
-          class="fadein flex items-center gap-2 px-4 py-1 mt-2 transition-all rounded-full shadow-sm hover:shadow-md cursor-pointer hover:bg-[#1981c6] bg-[#1D9BF0] text-bright"
-          href="https://twitter.com/Destra41985317"
-          target="_blank"
-        >
-          Twitter
-          <img
-            src="/images/icons/icon-twitter-white.svg"
-            alt="Twitter Logo"
-            class="h-3"
-          />
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="bg-primary">
-    <div class="flex flex-col max-w-screen-limit gap-6 p-10 m-auto text-bright">
-      <h2 class="text-3xl text-center fadein">What is our goal?</h2>
-      <p class="max-w-screen-sm m-auto font-light text-center fadein">
-        Our goal is to significantly reduce the costs of robotic components and
-        prostheses through the novel additive manufacturing method of
-        3D-printing. This can make robotics accessible to more people, which can
-        be particularly useful in teaching. The manufacturing process also
-        enables individualization of the parts and fast production.
-      </p>
-    </div>
-  </div>
+    </a>
+  </TextSection>
+  <TextSection title="What is our goal?" bright={true}>
+    Our goal is to significantly reduce the costs of robotic components and
+    prostheses through the novel additive manufacturing method of 3D-printing.
+    This can make robotics accessible to more people, which can be particularly
+    useful in teaching. The manufacturing process also enables individualization
+    of the parts and fast production.
+  </TextSection>
 </Layout>

@@ -1,10 +1,13 @@
 ---
+import TextSection from '../components/TextSection.astro';
 import ContentPage from '../layouts/Contentpage.astro';
 ---
 
-<ContentPage title="Kontakt">
-  <h1 class="text-4xl fadein mb-6">Kontakt</h1>
-  <p class="fadein">
-    <a href="mailto:leon.kollofrath@gmail.com">leon.kollofrath@gmail.com</a>
-  </p>
+<ContentPage title="Contact">
+  <TextSection title="Contact" noImage>
+    To get in contact, send an email to <a
+      class="underline hover:no-underline"
+      href="mailto:leon.kollofrath@gmail.com">leon.kollofrath@gmail.com</a
+    >
+  </TextSection>
 </ContentPage>

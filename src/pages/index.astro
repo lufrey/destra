@@ -4,6 +4,8 @@ import Layout from '../layouts/Layout.astro';
 
 import circle from '../assets/circle.svg';
 import Headline from '../components/Headline.astro';
+import TextSection from '../components/TextSection.astro';
+import LinkButton from '../components/LinkButton.astro';
 
 const compatibleWith = [
   {
@@ -71,37 +73,25 @@ const compatibleWith = [
       </div>
     </div>
   </div>
-  <div class="bg-bright">
-    <div
-      class="flex flex-col items-center max-w-screen-limit gap-6 py-20 m-auto text-primary md:flex-row px-20"
-    >
-      <div class="flex flex-col gap-10 basis-2/3 items-start">
-        <Headline>What is Destra?</Headline>
-        <p class="font-mono text-xl leading-normal">
-          Destra is a fully 3D-printed robotic hand that enables cost-effective
-          manufacturing for teaching, prosthetics and interfacing with other
-          robotic systems. With 6 degrees of freedom, each finger can be
-          controlled independently and the thumb can be opposed. A suitable
-          coupling point makes it compatible with any modern robot arm.
-        </p>
-        <a
-          class="font-secondary underline underline-offset-4 text-2xl leading-9 hover:no-underline"
-          href="#"
-        >
-          Learn more
-        </a>
-      </div>
-      <Pic
-        alt="black robot hand"
-        src={import('../assets/hand_black.png')}
-        aspectRatio={1}
-        widths={[600, 1200]}
-        sizes="(max-width: 600px) 300px, 100vw"
-        imgClass="h-full object-contain"
-        class="h-96 w-auto basis-1/3"
-      />
-    </div>
-  </div>
+  <TextSection title="What is Destra?" bright={true}>
+    Destra is a fully 3D-printed robotic hand that enables cost-effective
+    manufacturing for teaching, prosthetics and interfacing with other robotic
+    systems. With 6 degrees of freedom, each finger can be controlled
+    independently and the thumb can be opposed. A suitable coupling point makes
+    it compatible with any modern robot arm.
+    <LinkButton slot="button" href="/project">Learn more</LinkButton>
+    <Pic
+      slot="image"
+      alt="black robot hand"
+      src={import('../assets/hand_black.png')}
+      aspectRatio={1}
+      widths={[600, 1200]}
+      sizes="(max-width: 600px) 300px, 100vw"
+      imgClass="h-full object-contain"
+      class="h-96 w-auto basis-1/3"
+    />
+  </TextSection>
+
   <div class="bg-dark">
     <div
       class="max-w-screen-limit gap-6 py-24 p-10 m-auto text-bright px-20 flex flex-col items-start"

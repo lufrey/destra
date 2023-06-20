@@ -1,0 +1,21 @@
+---
+import { clsxt } from '../util';
+export interface Props {
+    href: string;
+    bright?: boolean;
+    customClass?: string;
+}
+
+const { bright = false, href, customClass } = Astro.props;
+---
+
+<a
+    class={clsxt(
+        'font-secondary underline underline-offset-4 text-2xl leading-9 hover:no-underline',
+        bright ? 'text-bright' : 'text-dark',
+        customClass
+    )}
+    href={href}
+>
+    <slot />
+</a>

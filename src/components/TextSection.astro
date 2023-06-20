@@ -1,0 +1,42 @@
+---
+import { clsxt } from '../util';
+import Headline from './Headline.astro';
+export interface Props {
+    bright?: boolean;
+    title: string;
+    imageAlign?: 'left' | 'right';
+    noImage?: boolean;
+}
+
+const { bright = true, title, imageAlign = 'right', noImage } = Astro.props;
+const imageLeftAlign = imageAlign === 'left';
+---
+
+<div class={clsxt(bright ? 'bg-bright' : 'bg-dark')}>
+    <div
+        class={clsxt(
+            'flex flex-col items-center max-w-screen-limit gap-20 py-20 m-auto text-primary px-20',
+            imageLeftAlign ? 'md:flex-row-reverse' : 'md:flex-row'
+        )}
+    >
+        <div
+            class={clsxt(
+                'flex flex-col gap-10',
+                !noImage && 'basis-2/3',
+                imageLeftAlign ? 'items-end text-end' : 'items-start'
+            )}
+        >
+            <Headline bright={!bright}>{title}</Headline>
+            <p
+                class={clsxt(
+                    'font-mono text-xl leading-normal',
+                    bright ? 'text-dark' : 'text-bright'
+                )}
+            >
+                <slot />
+            </p>
+            <slot name="button" />
+        </div>
+        <slot name="image" />
+    </div>
+</div>
