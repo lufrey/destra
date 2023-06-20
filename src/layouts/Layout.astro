@@ -1,9 +1,10 @@
 ---
 export interface Props {
   title: string;
+  metaDescription?: string;
 }
 
-const { title } = Astro.props;
+const { title, metaDescription } = Astro.props;
 const year = new Date().getFullYear();
 import logo from '../assets/logo.svg';
 
@@ -20,6 +21,8 @@ const importantFonts = [
   '/fonts/orbitron-v29-latin-regular.woff2',
   '/fonts/rubik-v26-latin-regular.woff2',
   '/fonts/source-code-pro-v22-latin-300.woff2',
+  '/fonts/source-code-pro-v22-latin-regular.woff2',
+  '/fonts/orbitron-v29-latin-600.woff2',
 ];
 ---
 
@@ -36,7 +39,10 @@ const importantFonts = [
     }
     <link rel="stylesheet preload" as="style" href="/fonts/fonts.css" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content={metaDescription ?? '3D-printed  ROS compatible humanoid hand'}
+    />
     <title>{title}</title>
   </head>
   <body>
@@ -44,7 +50,13 @@ const importantFonts = [
       <div
         class="flex items-center justify-between px-8 py-6 m-auto max-w-screen-limit md:px-20 md:pr-16"
       >
-        <a href="/"><img src={logo.src} class="block h-10" /></a>
+        <a href="/" aria-label="Home"
+          ><img
+            src={logo.src}
+            alt="Destra Robotics - Logo"
+            class="block h-10"
+          /></a
+        >
         <nav class="items-center hidden gap-5 text-xl uppercase links md:flex">
           {
             navigation.map((link) => (
