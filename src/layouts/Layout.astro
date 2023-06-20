@@ -14,6 +14,13 @@ const navigation = [
 ];
 import { clsxt } from '../util';
 const isCurrentPage = (href: string) => Astro.url.pathname.startsWith(href);
+
+const importantFonts = [
+  '/fonts/orbitron-v29-latin-700.woff2',
+  '/fonts/orbitron-v29-latin-regular.woff2',
+  '/fonts/rubik-v26-latin-regular.woff2',
+  '/fonts/source-code-pro-v22-latin-300.woff2',
+];
 ---
 
 <!DOCTYPE html>
@@ -22,7 +29,12 @@ const isCurrentPage = (href: string) => Astro.url.pathname.startsWith(href);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href="/fonts/fonts.css" />
+    {
+      importantFonts.map((font) => (
+        <link rel="preload" as="font" href={font} crossorigin />
+      ))
+    }
+    <link rel="stylesheet preload" as="style" href="/fonts/fonts.css" />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="noindex, nofollow" />
     <title>{title}</title>
